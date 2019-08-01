@@ -1,0 +1,37 @@
+#!/bin/bash
+
+DATA_DIR=/path/to/data
+
+
+MODELTYPE=lstm
+for TRAIN_TYPE in 2001-2002 rolling_limited rolling
+do
+	for TARGET in los_3 mort_icu
+	do
+		for MODELTYPE in lstm grud
+		do
+			echo "*******************************************************************************************************"
+			echo $TRAIN_TYPE
+			echo $TARGET
+			python -u AUC_GH.py --representation raw --level nlp --train_type $TRAIN_TYPE --modeltype $MODELTYPE --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+			python -u AUC_GH.py --representation raw --level itemid --train_type $TRAIN_TYPE --modeltype lstm --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+			python -u AUC_GH.py --representation raw --level Level2 --train_type $TRAIN_TYPE --modeltype lstm --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+			python -u AUC_GH.py --representation pca --level itemid --train_type $TRAIN_TYPE --modeltype lstm --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+		done
+	done
+done
+
+
+MODELTYPE=grud
+for TRAIN_TYPE in 2001-2002 rolling_limited rolling
+do
+	for TARGET in los_3 mort_icu
+	do
+		echo "*******************************************************************************************************"
+		echo $TRAIN_TYPE
+		echo $TARGET
+		python -u AUC_GH.py --representation raw --level nlp --train_type $TRAIN_TYPE --modeltype $MODELTYPE --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+		python -u AUC_GH.py --representation raw --level itemid --train_type $TRAIN_TYPE --modeltype lstm --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+		python -u AUC_GH.py --representation raw --level Level2 --train_type $TRAIN_TYPE --modeltype lstm --random_seed 0 1 2 3 4 --data_dir $DATA_DIR --target $TARGET
+	done
+done

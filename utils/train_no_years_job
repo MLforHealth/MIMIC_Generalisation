@@ -1,0 +1,24 @@
+#!/bin/bash
+source ~/.bashrc
+source activate ~/envs/torch
+
+which python;
+python -c "print('test python job')"
+
+
+DATA_DIR=/path/to/data
+
+for MODELTYPE in lr rf lstm grud
+do
+	python -u AUC_GH.py --representation raw --level nlp --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target mort_icu
+	python -u AUC_GH.py --representation raw --level nlp --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target los_3
+
+	python -u AUC_GH.py --representation raw --level itemid --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target mort_icu
+	python -u AUC_GH.py --representation raw --level itemid --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target los_3
+
+	python -u AUC_GH.py --representation raw --level Level2 --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target mort_icu
+	python -u AUC_GH.py --representation raw --level Level2 --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target los_3
+
+	python -u AUC_GH.py --representation pca --level itemid --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target mort_icu
+	python -u AUC_GH.py --representation pca --level itemid --train_type no_years --modeltype MODELTYPE --random_seed 0 --data_dir $DATA_DIR --target los_3
+done
