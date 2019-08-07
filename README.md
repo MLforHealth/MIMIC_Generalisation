@@ -1,6 +1,24 @@
 # Feature Robustness in Non-stationary Health Records: Caveats to Deployable Model Performance in Common Clinical Machine Learning Tasks
 
+The paper can be found here: [https://arxiv.org/abs/1908.00690](https://arxiv.org/abs/1908.00690)
+
+If you use this repository please cite:
 ```
+@ARTICLE{2019arXiv190800690N,
+       author = {Bret Nestor, Matthew B.~A. McDermott, Willie Boag, Gabriela Berner, Tristan Naumann, Michael C. Hughes, Anna Goldenberg, Marzyeh Ghassemi},
+        title = "{Feature Robustness in Non-stationary Health Records: Caveats to Deployable Model Performance in Common Clinical Machine Learning Tasks}",
+      journal = {arXiv e-prints},
+     keywords = {Computer Science - Machine Learning, Statistics - Machine Learning},
+         year = "2019",
+        month = "Aug",
+          eid = {arXiv:1908.00690},
+        pages = {arXiv:1908.00690},
+archivePrefix = {arXiv},
+       eprint = {1908.00690},
+ primaryClass = {cs.LG},
+       adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190800690N},
+      adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
 ```
 
 # About
